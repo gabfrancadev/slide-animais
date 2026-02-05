@@ -33,22 +33,43 @@ img {
 }
 .arrow-nav {
   display: flex;
-  justify-content: space-between;
-  margin: 20px 0;
+  justify-content: space-around;
+  margin-top: 20 0;
 }
-.prev,
-.next {
-  pointer-events: all;
-  color: rgb(0, 0, 0);
+.arrow-nav button {
   cursor: pointer;
-  background: rgba(0, 0, 0, 0.2);
   border: none;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
+  font-size: large;
+  border-radius: 4px;
+  color: white;
+  width: 40px;
+  height: 40px;
+  background: #fb5 url("../img/arrow.svg") no-repeat center center;
+}
+.arrow-nav button:hover {
+  background-color: #e04e3d;
+}
+.arrow-nav button.prev {
+  transform: rotate(180deg);
+}
+.custom-control {
   display: flex;
-  align-items: center;
   justify-content: center;
-  transition: 0.3s;
-  user-select: none;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.custom-control li {
+  opacity: 0.8;
+  transform: scale(0.8);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 2px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+}
+.custom-control li.active {
+  opacity: 1;
+  transform: scale(1);
 }

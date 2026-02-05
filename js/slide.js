@@ -134,12 +134,34 @@ export class Slide {
   }
 }
 
-export class SlideNav extends Slide {
+export default class SlideNav extends Slide {
+  addCustomControl(customControl) {
+    this.control = document.querySelector(customControl);
+    this.controlArray = [...this.control.children];
+    this.controlArray.forEach((item, index) => {
+      item.addEventListener("click", (event) => {
+        event.preventDefault();
+        this.changeSlide(index);
+      });
+    });
+  }
+  changeActiveClass() {
+    super.changeActiveClass();
+
+    if (this.controlArray) {
+      this.controlArray.forEach((item) =>
+        item.classList.remove(this.activeClass),
+      );
+      this.controlArray[this.index.active].classList.add(this.activeClass);
+    }
+  }
+
   addArrow(prev, next) {
     this.prevElement = document.querySelector(prev);
     this.nextElement = document.querySelector(next);
     this.addArrowEvents();
   }
+
   addArrowEvents() {
     this.prevElement.addEventListener("click", this.activePrevSlide);
     this.nextElement.addEventListener("click", this.activeNextSlide);
